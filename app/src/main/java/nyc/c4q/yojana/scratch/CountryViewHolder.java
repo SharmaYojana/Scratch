@@ -1,5 +1,6 @@
 package nyc.c4q.yojana.scratch;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,11 +26,20 @@ public class CountryViewHolder extends RecyclerView.ViewHolder {
         return inflater.inflate(R.layout.countryview_holder, parent, false);
     }
 
-    public void bind(Example example){
+    public void bind(final Example example){
         String name = example.getName();
         String population = String.valueOf(example.getPopulation());
         countryName.setText(name);
         countryPopulation.setText(population);
+        countryName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), SecondActivity.class);
+                String nativename = example.getNativeName();
+                intent.putExtra("String", nativename);
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
 }

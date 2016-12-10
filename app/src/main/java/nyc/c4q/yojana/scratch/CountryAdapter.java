@@ -30,6 +30,7 @@ public class CountryAdapter extends RecyclerView.Adapter {
         CountryViewHolder vh = (CountryViewHolder) holder;
         vh.bind(list.get(position));
 
+
     }
 
     @Override
